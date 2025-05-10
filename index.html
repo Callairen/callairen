@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Callairen's Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+        
+        * {     
+            margin: 0;     
+            padding: 0;     
+            box-sizing: border-box;     
+            text-decoration: none;     
+            border: none;     
+            outline: none;            
+            font-family: 'Poppins', sans-serif; 
+        }  
+        
+        html {     
+            font-size: 62.5%; 
+        }  
+        
+        body {     
+            width: 100%;     
+            height: 100vh;     
+            overflow-x: hidden;     
+            background-color: #331835; 
+            color: white; 
+            transition: all 0.3s ease;
+            position: relative;
+        }  
+        
+        body.light-mode {
+            background-color: #ffe8ab;
+            color: #331835;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 9%;
+            background-color: rgba(51, 24, 53, 0.9); 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.light-mode header {
+            background-color: rgba(255, 232, 171, 0.9);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            color: blanchedalmond;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.5s ease;
+        }
+        
+        body.light-mode .logo {
+            color: #331835;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            font-size: 1.6rem;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        body.light-mode nav a {
+            color: #331835;
+        }
+        
+        nav a:hover, nav a.active {
+            color: #ffe8ab;
+            background-color: rgba(255, 232, 171, 0.2);
+        }
+        
+        body.light-mode nav a:hover, 
+        body.light-mode nav a.active {
+            color: #331835;
+            background-color: rgba(51, 24, 53, 0.2);
+        }
+        
+        section {
+            min-height: 100vh;
+            padding: 10rem 9% 5rem;
+        }
+        
+        .home {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8rem;
+            background-color: transparent;
+        }
+        
+        .home .home-content h1 {
+            margin-top: 5rem;
+            margin-bottom: 2rem;
+            font-size: 3.5rem;
+            font-weight: 7;
+            line-height: 1.3;
+        }
+        
+        .home .home-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-top: 1rem;
+            margin-bottom: 5rem;
+        }
+        
+        span {
+            color: #ffe8ab;
+        }
+        
+        body.light-mode span {
+            color: #331835;
+        }
+        
+        .home-content h3 {
+            font-size: 3rem;
+            margin-top: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .home-content p {
+            font-size: 1.3rem;
+            margin-top: 0.05rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .home-content-list {
+            font-size: 1.3rem;
+            margin-top: 0.05rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            padding-left: 1.5rem;
+        }
+        
+        .home img {
+            border-radius: 50%;
+        }
+        
+        .home-img img {
+            position: relative;
+            width: 30vw;
+            border-radius: 50%;
+            box-shadow: 0 0 25px solid #ffe8ab;
+            cursor: pointer;
+            transform: 0.2s linear;
+        }
+        
+        .home-img img:hover {
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 4rem;
+            height: 4rem;
+            background-color: transparent;
+            border: 0.2rem solid white;
+            font-size: 2rem;
+            border-radius: 50%;
+            margin: 3rem 1.5rem 3rem;
+            transition: 0.3s ease;
+            color: white;
+            text-decoration: none;
+        }
+        
+        body.light-mode .social-icons a {
+            border-color: #331835;
+            color: #331835;
+        }
+        
+        .social-icons a i {
+            color: white;
+            transition: 0.3s ease;
+        }
+        
+        body.light-mode .social-icons a i {
+            color: #331835;
+        }
+        
+        .social-icons a:hover {
+            color: #331835;
+            transform: scale(1.3) translateY(-5px);
+            background-color: #bcae79;
+            box-shadow: 0 0 25px #ffe8ab;
+        }
+        
+        .social-icons a:hover i {
+            color: #331835;
+        }
+        
+        body.light-mode .social-icons a:hover {
+            background-color: #331835;
+        }
+        
+        body.light-mode .social-icons a:hover i {
+            color: #ffe8ab;
+        }
+        
+        .home .hireme .hire-btn {
+            display: inline-block;
+            padding: 1rem 2.8rem;
+            font-size: 1.3rem;
+            background-color: white;
+            color: #331835;
+            border-radius: 50px;
+            border: 2px solid #331835;
+            font-weight: 600;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.8rem;
+            font-size: 1.3rem;
+            background-color: white;
+            color: #331835;
+            border-radius: 50px;
+            border: 2px solid #331835;
+            font-weight: 600;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #331835;
+            color: white;
+            border-color: white;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+        
+        body.light-mode .btn:hover {
+            background-color: #ffe8ab;
+            color: #331835;
+            border-color: #331835;
+        }
+        
+        .typing-text {
+            font-size: 34px;
+            font-weight: 600;
+            min-width: 280px;
+        }
+        
+        .typing-text span {
+            position: relative;
+        }
+        
+        .typing-text span:before {
+            content: "Digital Artist - Illustrator";
+            color: #ffe8ab;
+            animation: words 20s infinite;
+        }
+        
+        body.light-mode .typing-text span:before {
+            color: #331835;
+        }
+        
+        .typing-text span:after {
+            content: "";
+            background-color: #331835;
+            position: absolute;
+            width: calc(100% + 8px);
+            height: 100%;
+            border-left: 3px solid #331835;
+            right: -8px;
+            animation: cursor 0.6s infinite;
+        }
+        
+        body.light-mode .typing-text span:after {
+            background-color: #ffe8ab;
+            border-left: 3px solid #ffe8ab;
+        }
+        
+        @keyframes cursor {
+            to {
+                border-left: 3px solid #ffe8ab;
+            }
+        }
+        
+        body.light-mode {
+    @keyframes cursor {
+        to {
+            border-left: 3px solid #331835;
+        }
+    }
+}
+        
+        @keyframes words {
+            0%, 20% { content: "Digital Artist"; }
+            21%, 40% { content: "Illustrator"; }
+            41%, 60% { content: "Emoji Animator"; }
+            61%, 80% { content: "Game Artist"; }
+            81%, 100% { content: "Fanartist"; }
+        }
+        
+        @media (max-width: 1000px) {
+            .home {
+                gap: 4rem;
+            }
+        }
+        
+        @media (max-width: 995px) {
+            .home {
+                flex-direction: column;
+                margin: 5rem 4rem;
+            }
+            .home .home-content h3 {
+                font-size: 2.5rem;
+            }
+            .home-content h1 {
+                font-size: 5rem;
+            }
+            .home-img img {
+                width: 70vh;
+                margin-top: 4rem;
+            }
+        }
+        
+        .gallery-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 700px;
+            margin: 5rem auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 232, 171, 0.3);
+        }
+        
+        .gallery-slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-slide {
+            min-width: 100%;
+            position: relative;
+            height: 100%;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 15px;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(51, 24, 53, 0.7); 
+            color: #ffe8ab;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        
+        body.light-mode .gallery-caption {
+            background: rgba(255, 232, 171, 0.7);
+            color: #331835;
+        }
+        
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #ffe8ab;
+            margin: 0 8px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        
+        body.light-mode .gallery-dot {
+            background: #331835;
+        }
+        
+        .gallery-dot.active {
+            opacity: 1;
+        }
+        
+        .gallery-prev, .gallery-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 232, 171, 0.7);
+            color: #331835;
+            border: none;
+            padding: 20px 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 2.5rem;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        body.light-mode .gallery-prev, 
+        body.light-mode .gallery-next {
+            background: rgba(51, 24, 53, 0.7); 
+            color: #ffe8ab;
+        }
+        
+        .gallery-prev:hover, .gallery-next:hover {
+            background: #ffe8ab;
+        }
+        
+        body.light-mode .gallery-prev:hover, 
+        body.light-mode .gallery-next:hover {
+            background: #331835;
+            color: #ffe8ab;
+        }
+        
+        .gallery-prev {
+            left: 30px;
+        }
+        
+        .gallery-next {
+            right: 30px;
+        }
+        
+    
+        .theme-toggle-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .theme-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 232, 171, 0.2);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #ffe8ab;
+        }
+        
+        body.light-mode .theme-toggle {
+            background-color: rgba(51, 24, 53, 0.2);
+            color: #331835;
+            border-color: #331835;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            background-color: rgba(255, 232, 171, 0.4);
+        }
+        
+        body.light-mode .theme-toggle:hover {
+            background-color: rgba(51, 24, 53, 0.4);
+        }
+        
+
+        .clock-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 232, 171, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: white;
+            z-index: 1000;
+            border: 2px solid #ffe8ab;
+        }
+        
+        body.light-mode .clock-container {
+            background: rgba(51, 24, 53, 0.2);
+            color: #331835;
+            border-color: #331835;
+        }
+        
+       
+        .strikethrough {
+            font-family: Arial, sans-serif;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Callairen</a>
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">Commission</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="home">
+        <div class="home-img">
+            <img src="profile picture.png" alt="Callairen's Artwork">
+        </div>
+
+        <div class="home-content">
+            <h1>Hi, It's <span>Callairen</span></h1>
+            <h2 class="typing-text">I'm a Digital Artist & Illustrator</h2>
+            
+            <p>
+                <b>I've been drawing digitally since I was 13</b> and have been in the 
+                <u>freelance artist business for 4 years.</u>  
+                I specialize in creating <mark>anime-style illustrations, fanart, and simple animations.</mark>  
+                Now, I'm just a <sup> hobbyist </sup> im majoring<b> Information Technology</b> at Brawijaya University.
+            </p>
+
+            <p class="strikethrough">i draw for moneeh</p>
+
+            <p>I can draw most character designs, including:</p>
+            <ol class="home-content-list">
+                <li>Fanart</li>
+                <li>Illustrations</li>
+                <li>Simple Animations</li>
+            </ol>
+            
+            <p>Tools I use for my artworks:</p>
+            <ul class="home-content-list">
+                <li>Clip Studio Paint</li>
+                <li>Ibis Paint X</li>
+                <li>Alight Motion</li>
+            </ul>
+            
+            <div class="social-icons">
+                <a href="https://wa.me/6285157001109"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@callairen"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/callairen"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="hireme">
+                <a href="https://wa.me/6285157001109" target="_blank" class="hire-btn">Hire Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2 style="text-align: center; font-size: 3rem; margin-bottom: 3rem; color: #ffe8ab;">My Art Gallery</h2>
+        <div class="gallery-container">
+            <div class="gallery-slides">
+                <div class="gallery-slide">
+                    <img src="yunjin.png" alt="Artwork 1">
+                    <div class="gallery-caption">Yunjin Fanart Genshin Impact - 2025</div>
+                </div>
+                <div class="gallery-slide">
+                    <img src="raiden.png" alt="Artwork 2">
+                    <div class="gallery-caption">Raiden Shogun Fanart Genshin Impact - 2025</div>
+                </div>
+                <div class="gallery-slide">
+                    <img src="Bubur Collab.png" alt="Artwork 3">
+                    <div class="gallery-caption">Callairen & Excalibur Collab Art - 2025</div>
+                </div>
+                <div class="gallery-slide">
+                    <img src="baizhu.png" alt="Artwork 4">
+                    <div class="gallery-caption">Baizhu Fanart Genshin Impact - 2024</div>
+                </div>
+                <div class="gallery-slide">
+                    <img src="kuki.jpg" alt="Artwork 5">
+                    <div class="gallery-caption">Kuki Shinobu Fanart Genshin Impact - 2024</div>
+                </div>
+            </div>
+            <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="gallery-next"><i class="fas fa-chevron-right"></i></button>
+            <div class="gallery-nav">
+                <div class="gallery-dot active"></div>
+                <div class="gallery-dot"></div>
+                <div class="极速赛车开奖官网 dot"></div>
+                <div class="gallery-dot"></div>
+                <div class="gallery-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="clock-container">
+        <div id="clock" class="clock"></div>
+    </div>
+
+    <div class="theme-toggle-container">
+        <button id="themeToggle" class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        
+        const currentTheme = localStorage.getItem('theme') || 
+                            (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes} ${ampm}`;
+        }
+        
+        setInterval(updateClock, 1000);
+        updateClock(); 
+        
+        const slides = document.querySelector('.gallery-slides');
+        const slideItems = document.querySelectorAll('.gallery-slide');
+        const prevBtn = document.querySelector('.gallery-prev');
+        const nextBtn = document.querySelector('.gallery-next');
+        const dots = document.querySelectorAll('.gallery-dot');
+        
+        let currentIndex = 0;
+        const totalSlides = slideItems.length;
+        
+        function updateSlider() {
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        });
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateSlider();
+            });
+        });
+        
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        }, 5000);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
